@@ -32,13 +32,18 @@ class Pessoa(models.Model):
 
 class Bloco(models.Model):
     bloco = models.CharField(max_length=50, verbose_name="Bloco", blank=False, null=False)
+
 class Setor(models.Model):
     bloco = models.ForeignKey(Bloco, verbose_name="Bloco", blank=False, null=False, on_delete=models.CASCADE)
-    setor = models.CharField(max_length=50, verbose_name="Bloco", blank=False, null=False)
+    andar = models.CharField(max_length=50, verbose_name="Bloco", blank=False, null=False)
+
+class Area(models.Model):
+    area = models.CharField(max_length=50, verbose_name="Fone/Ramal", blank=False, null=False)
 
 class ListaFone(models.Model):
-    fone = models.CharField(max_length=15, verbose_name="Fone/Ramal", blank=False, null=False)
     pessoaLista = models.ForeignKey(Pessoa, verbose_name="Colaborador", blank=False, null=False, on_delete=models.CASCADE)
+    fone = models.CharField(max_length=15, verbose_name="Fone/Ramal", blank=False, null=False)
+    area = models.ForeignKey(Area, verbose_name="Área", blank=True,null=True, on_delete=models.CASCADE)
     bloco = models.ForeignKey(Bloco, verbose_name="Bloco", blank=False, null=False, on_delete=models.CASCADE)
     setor = models.ForeignKey(Setor, verbose_name="Setor", blank=False, null=False, on_delete=models.CASCADE)
 
