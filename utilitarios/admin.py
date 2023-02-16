@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Pessoa, Bloco, Setor, ListaFone
+from .models import Pessoa, Bloco, Setor, ListaFone, Area
 
 # Register your models here.
 
@@ -14,6 +14,13 @@ class BlocoAdmin(admin.ModelAdmin):
     list_display = ()
     fields = []
 
+
+@admin.register(Area)
+class AreaAdmin(admin.ModelAdmin):
+    list_display = ()
+    fields = []
+
+
 @admin.register(Setor)
 class SetorAdmin(admin.ModelAdmin):
     list_display = ()
@@ -22,6 +29,6 @@ class SetorAdmin(admin.ModelAdmin):
 
 @admin.register(ListaFone)
 class ListaFoneAdmin(admin.ModelAdmin):
-    list_display = ()
+    list_display = ('pessoaLista', 'fone', 'area', 'bloco', 'setor')
     fields = []
 
